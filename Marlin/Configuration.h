@@ -814,7 +814,7 @@
  * *** IT IS HIGHLY RECOMMENDED TO LEAVE THIS OPTION ENABLED! ***
  */
 #define PREVENT_COLD_EXTRUSION
-#define EXTRUDE_MINTEMP 0
+#define EXTRUDE_MINTEMP 175
 
 /**
  * Prevent a single extrusion longer than EXTRUDE_MAXLENGTH.
@@ -1160,7 +1160,7 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 401.8, 400 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 401.8, 404 }
 
 /**
  * Default Max Feed Rate (linear=mm/s, rotational=°/s)
@@ -1334,11 +1334,11 @@
 #define PROBING_FANS_OFF // *option
 // #define Z_PROBE_OFFSET_FROM_EXTRUDER -2.7 //Depend on your BLTouch installation value
 
-#define PROBING_MARGIN 22
+// #define PROBING_MARGIN 20
 
-#define Z_PROBE_FEEDRATE_FAST HOMING_FEEDRATE_Z / 2
-#define Z_CLEARANCE_DEPLOY_PROBE 15 // set up at least 10
-#define Z_CLEARANCE_BETWEEN_PROBES 5 // set up at least 5
+// #define Z_PROBE_FEEDRATE_FAST HOMING_FEEDRATE_Z / 2
+// #define Z_CLEARANCE_DEPLOY_PROBE 15 // set up at least 10
+// #define Z_CLEARANCE_BETWEEN_PROBES 5 // set up at least 5
 
 
 /**
@@ -1351,6 +1351,10 @@
   //#define MAGLEV_TRIGGER_PIN 11     // Set to the connected digital output
   #define MAGLEV_TRIGGER_DELAY 15     // Changing this risks overheating the coil
 #endif
+
+#define BABYSTEPPING // 3DWORK BABYSTEPPING
+#define DOUBLECLICK_FOR_Z_BABYSTEPPING // 3DWORK BABYSTEPPING
+#define BABYSTEP_DISPLAY_TOTAL // 3DWORK BABYSTEPPING
 
 /**
  * Touch-MI Probe by hotends.fr
@@ -1495,7 +1499,7 @@
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-#define PROBING_MARGIN 10
+#define PROBING_MARGIN 20
 
 // X and Y axis travel speed (mm/min) between probes
 #define XY_PROBE_FEEDRATE (133*60)
@@ -1568,7 +1572,7 @@
  * Example: `M851 Z-5` with a CLEARANCE of 4  =>  9mm from bed to nozzle.
  *     But: `M851 Z+1` with a CLEARANCE of 2  =>  2mm from bed to nozzle.
  */
-#define Z_CLEARANCE_DEPLOY_PROBE   10 // Z Clearance for Deploy/Stow
+#define Z_CLEARANCE_DEPLOY_PROBE   15 // Z Clearance for Deploy/Stow
 #define Z_CLEARANCE_BETWEEN_PROBES  5 // Z Clearance between probe points
 #define Z_CLEARANCE_MULTI_PROBE     5 // Z Clearance between multiple probes
 //#define Z_AFTER_PROBING           5 // Z position after probing is done
@@ -1702,7 +1706,7 @@
 // @section geometry
 
 // The size of the printable area
-#define X_BED_SIZE 230
+#define X_BED_SIZE 235
 #define Y_BED_SIZE 225
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
@@ -1711,7 +1715,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 230
+#define Z_MAX_POS 240
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
 //#define J_MIN_POS 0
@@ -1881,8 +1885,8 @@
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-// #define AUTO_BED_LEVELING_BILINEAR
-#define AUTO_BED_LEVELING_UBL
+#define AUTO_BED_LEVELING_BILINEAR
+// #define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 
 /**
@@ -2033,7 +2037,7 @@
 #define LCD_BED_TRAMMING
 
 #if ENABLED(LCD_BED_TRAMMING)
-  #define BED_TRAMMING_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets
+  #define BED_TRAMMING_INSET_LFRB { 40, 40, 30, 30 } // (mm) Left, Front, Right, Back insets
   #define BED_TRAMMING_HEIGHT      0.0        // (mm) Z height of nozzle at leveling points
   #define BED_TRAMMING_Z_HOP       4.0        // (mm) Z height of nozzle between leveling points
   //#define BED_TRAMMING_INCLUDE_CENTER       // Move to the center after the last corner
